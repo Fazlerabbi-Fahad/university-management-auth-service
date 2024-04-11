@@ -4,7 +4,7 @@
     "lint:check": "eslint --ignore-path .eslintignore --ext .js,.ts",
     "lint:fix": "eslint --fix",
     "prettier:check": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
-    "lint:prettier": "npm lint:check && npm prettier:check",
+    "lint:prettier": "npm run lint:check && npm run prettier:check",
     "prepare": "husky"
   },
   "husky": {
@@ -13,7 +13,7 @@
     }
   },
   "lint-staged": {
-    "src/**/*.ts": "npm lint:prettier"
+    "src/**/*.ts": "npm run lint:prettier"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
