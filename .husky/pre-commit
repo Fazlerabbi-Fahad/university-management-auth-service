@@ -1,1 +1,1 @@
-echo "npm run lint:check" > .husky/pre-commit
+echo "npm lint-staged" > .husky/pre-commits
