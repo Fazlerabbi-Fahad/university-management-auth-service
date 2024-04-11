@@ -1,1 +1,1 @@
-npm run lint:check
+echo "npm run lint:check" > .husky/pre-commit
