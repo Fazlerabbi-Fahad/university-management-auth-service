@@ -2,7 +2,7 @@ import express, { Application, Request, Response } from 'express'
 import cors from 'cors'
 const app: Application = express()
 
-pp.use(cors())
+app.use(cors())
 
 //parsing
 app.use(express.json())

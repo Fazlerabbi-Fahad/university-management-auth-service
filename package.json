@@ -9,7 +9,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint-staged"
+      "pre-commit": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\""
     }
   },
   "lint-staged": {
