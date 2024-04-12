@@ -1,0 +1,6 @@
+{
+    "editor.codeActionsOnSave":{
+        "source.fixAll.exlint":true,
+        "source.organizeImports":true
+    }
+}
