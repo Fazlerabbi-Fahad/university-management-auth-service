@@ -1,0 +1,48 @@
+{
+  message: 'Database is connected successfully',
+  level: 'info',
+  label: 'UM',
+  timestamp: '2024-04-13T09:27:26.765Z'
+}
+{
+  message: 'Example app listening on port 5000',
+  level: 'info',
+  label: 'UM',
+  timestamp: '2024-04-13T09:27:26.788Z'
+}
+{
+  message: 'Database is connected successfully',
+  level: 'info',
+  label: 'UM',
+  timestamp: '2024-04-13T09:41:44.007Z'
+}
+{
+  message: 'Example app listening on port 5000',
+  level: 'info',
+  label: 'UM',
+  timestamp: '2024-04-13T09:41:44.025Z'
+}
+{
+  message: 'Database is connected successfully',
+  level: 'info',
+  label: 'UM',
+  timestamp: '2024-04-13T09:42:08.160Z'
+}
+{
+  message: 'Example app listening on port 5000',
+  level: 'info',
+  label: 'UM',
+  timestamp: '2024-04-13T09:42:08.182Z'
+}
+{
+  message: 'Database is connected successfully',
+  level: 'info',
+  label: 'UM',
+  timestamp: '2024-04-13T09:42:34.979Z'
+}
+{
+  message: 'Example app listening on port 5000',
+  level: 'info',
+  label: 'UM',
+  timestamp: '2024-04-13T09:42:35.011Z'
+}

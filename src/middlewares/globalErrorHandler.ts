@@ -1,43 +1,62 @@
-import { NextFunction, Request, Response } from 'express'
+import { ErrorRequestHandler } from 'express'
 import Config from '../Config'
 import handleValidationError from '../errors/handleValidationError'
 import { IGenericErrorMessage } from '../interface/ErrorMessage'
 import ApiError from '../errors/ApiError'
+import { errorLogger } from '../share/logger'
+import { ZodError } from 'zod'
+import handleZodError from '../errors/handleZodError'
+import handleCastError from '../errors/handleCastError'
 
-const globalErrorHandler = async (
-  err,
-  req: Request,
-  res: Response,
-  next: NextFunction,
+const globalErrorHandler: ErrorRequestHandler = async (
+  error,
+  req,
+  res,
+  next,
 ) => {
+  // eslint-disable-next-line no-unused-expressions
+  Config.env === 'development'
+    ? console.log('globalErrorHandler', error)
+    : errorLogger.error('globalErrorHandler', error)
+
   let statusCode = 500
   let message = 'Something went wrong!'
   let errorMessages: IGenericErrorMessage[] = []
 
-  if (err?.name === 'ValidationError') {
-    const simplifiedError = handleValidationError(err)
+  if (error?.name === 'ValidationError') {
+    const simplifiedError = handleValidationError(error)
 
     statusCode = simplifiedError.statusCode
     message = simplifiedError.message
     errorMessages = simplifiedError.errorMessages
-  } else if (err instanceof ApiError) {
-    statusCode = err?.statusCode
-    message = err?.message
-    errorMessages = err?.message
+  } else if (error instanceof ZodError) {
+    const simplifiedError = handleZodError(error)
+    statusCode = simplifiedError.statusCode
+    message = simplifiedError.message
+    errorMessages = simplifiedError.errorMessages
+  } else if (error?.name === 'CastError') {
+    const simplifiedError = handleCastError(error)
+    statusCode = simplifiedError.statusCode
+    message = simplifiedError.message
+    errorMessages = simplifiedError.errorMessages
+  } else if (error instanceof ApiError) {
+    statusCode = error?.statusCode
+    message = error?.message
+    errorMessages = error?.message
       ? [
           {
             path: '',
-            message: err?.message,
+            message: error?.message,
           },
         ]
       : []
-  } else if (err instanceof Error) {
-    message = err?.message
-    errorMessages = err?.message
+  } else if (error instanceof Error) {
+    message = error?.message
+    errorMessages = error?.message
       ? [
           {
             path: '',
-            message: err?.message,
+            message: error?.message,
           },
         ]
       : []
@@ -47,9 +66,8 @@ const globalErrorHandler = async (
     success: false,
     message,
     errorMessages,
-    stack: Config.env !== 'production' ? err?.stack : undefined,
+    stack: Config.env !== 'production' ? error?.stack : undefined,
   })
-  next()
 }
 
 export default globalErrorHandler

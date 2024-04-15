@@ -1,0 +1,150 @@
+{
+  expose: true,
+  statusCode: 400,
+  status: 400,
+  body: '{\r\n    "title":\r\n}',
+  type: 'entity.parse.failed',
+  level: 'error',
+  message: `globalErrorHandler Unexpected token '}', "{\r\n` +
+    '    "title":\r\n' +
+    '}" is not valid JSON',
+  stack: `SyntaxError: Unexpected token '}', "{\r\n` +
+    '    "title":\r\n' +
+    '}" is not valid JSON\n' +
+    '    at JSON.parse (<anonymous>)\n' +
+    '    at parse (F:\\Web Tec 2\\NoSQL\\universitry-management-auth-service\\node_modules\\body-parser\\lib\\types\\json.js:92:19)\n' +
+    '    at F:\\Web Tec 2\\NoSQL\\universitry-management-auth-service\\node_modules\\body-parser\\lib\\read.js:128:18\n' +
+    '    at AsyncResource.runInAsyncScope (node:async_hooks:206:9)\n' +
+    '    at invokeCallback (F:\\Web Tec 2\\NoSQL\\universitry-management-auth-service\\node_modules\\raw-body\\index.js:238:16)\n' +
+    '    at done (F:\\Web Tec 2\\NoSQL\\universitry-management-auth-service\\node_modules\\raw-body\\index.js:227:7)\n' +
+    '    at IncomingMessage.onEnd (F:\\Web Tec 2\\NoSQL\\universitry-management-auth-service\\node_modules\\raw-body\\index.js:287:7)\n' +
+    '    at IncomingMessage.emit (node:events:511:28)\n' +
+    '    at endReadableNT (node:internal/streams/readable:1367:12)\n' +
+    '    at processTicksAndRejections (node:internal/process/task_queues:82:21)',
+  label: 'UM',
+  timestamp: '2024-04-14T23:38:33.918Z'
+}
+{
+  issues: [
+    {
+      code: 'invalid_type',
+      expected: 'string',
+      received: 'undefined',
+      path: [ 'body', 'title' ],
+      message: 'Title is required'
+    }
+  ],
+  addIssue: [Function (anonymous)],
+  addIssues: [Function (anonymous)],
+  name: 'ZodError',
+  level: 'error',
+  message: 'globalErrorHandler [\n' +
+    '  {\n' +
+    '    "code": "invalid_type",\n' +
+    '    "expected": "string",\n' +
+    '    "received": "undefined",\n' +
+    '    "path": [\n' +
+    '      "body",\n' +
+    '      "title"\n' +
+    '    ],\n' +
+    '    "message": "Title is required"\n' +
+    '  }\n' +
+    ']',
+  stack: 'ZodError: [\n' +
+    '  {\n' +
+    '    "code": "invalid_type",\n' +
+    '    "expected": "string",\n' +
+    '    "received": "undefined",\n' +
+    '    "path": [\n' +
+    '      "body",\n' +
+    '      "title"\n' +
+    '    ],\n' +
+    '    "message": "Title is required"\n' +
+    '  }\n' +
+    ']\n' +
+    '    at Object.get error [as error] (F:\\Web Tec 2\\NoSQL\\universitry-management-auth-service\\node_modules\\zod\\lib\\types.js:43:31)\n' +
+    '    at ZodObject.parseAsync (F:\\Web Tec 2\\NoSQL\\universitry-management-auth-service\\node_modules\\zod\\lib\\types.js:166:22)\n' +
+    '    at processTicksAndRejections (node:internal/process/task_queues:95:5)',
+  label: 'UM',
+  timestamp: '2024-04-14T23:38:41.328Z'
+}
+{
+  issues: [
+    {
+      received: 'Spring',
+      code: 'invalid_enum_value',
+      options: [ 'Autumn', 'Summer', 'Fall' ],
+      path: [ 'body', 'title' ],
+      message: "Invalid enum value. Expected 'Autumn' | 'Summer' | 'Fall', received 'Spring'"
+    }
+  ],
+  addIssue: [Function (anonymous)],
+  addIssues: [Function (anonymous)],
+  name: 'ZodError',
+  level: 'error',
+  message: 'globalErrorHandler [\n' +
+    '  {\n' +
+    '    "received": "Spring",\n' +
+    '    "code": "invalid_enum_value",\n' +
+    '    "options": [\n' +
+    '      "Autumn",\n' +
+    '      "Summer",\n' +
+    '      "Fall"\n' +
+    '    ],\n' +
+    '    "path": [\n' +
+    '      "body",\n' +
+    '      "title"\n' +
+    '    ],\n' +
+    `    "message": "Invalid enum value. Expected 'Autumn' | 'Summer' | 'Fall', received 'Spring'"\n` +
+    '  }\n' +
+    ']',
+  stack: 'ZodError: [\n' +
+    '  {\n' +
+    '    "received": "Spring",\n' +
+    '    "code": "invalid_enum_value",\n' +
+    '    "options": [\n' +
+    '      "Autumn",\n' +
+    '      "Summer",\n' +
+    '      "Fall"\n' +
+    '    ],\n' +
+    '    "path": [\n' +
+    '      "body",\n' +
+    '      "title"\n' +
+    '    ],\n' +
+    `    "message": "Invalid enum value. Expected 'Autumn' | 'Summer' | 'Fall', received 'Spring'"\n` +
+    '  }\n' +
+    ']\n' +
+    '    at Object.get error [as error] (F:\\Web Tec 2\\NoSQL\\universitry-management-auth-service\\node_modules\\zod\\lib\\types.js:43:31)\n' +
+    '    at ZodObject.parseAsync (F:\\Web Tec 2\\NoSQL\\universitry-management-auth-service\\node_modules\\zod\\lib\\types.js:166:22)\n' +
+    '    at processTicksAndRejections (node:internal/process/task_queues:95:5)',
+  label: 'UM',
+  timestamp: '2024-04-14T23:50:36.035Z'
+}
+{
+  expose: true,
+  statusCode: 400,
+  status: 400,
+  body: '{\r\n' +
+    '     "title": "Autumn",\r\n' +
+    '  "year": "2023",\r\n' +
+    '  "code":"01",\r\n' +
+    '  "startMonth": "January",\r\n' +
+    '  endMonth: Months\r\n' +
+    '}',
+  type: 'entity.parse.failed',
+  level: 'error',
+  message: 'globalErrorHandler Expected double-quoted property name in JSON at position 93',
+  stack: 'SyntaxError: Expected double-quoted property name in JSON at position 93\n' +
+    '    at JSON.parse (<anonymous>)\n' +
+    '    at parse (F:\\Web Tec 2\\NoSQL\\universitry-management-auth-service\\node_modules\\body-parser\\lib\\types\\json.js:92:19)\n' +
+    '    at F:\\Web Tec 2\\NoSQL\\universitry-management-auth-service\\node_modules\\body-parser\\lib\\read.js:128:18\n' +
+    '    at AsyncResource.runInAsyncScope (node:async_hooks:206:9)\n' +
+    '    at invokeCallback (F:\\Web Tec 2\\NoSQL\\universitry-management-auth-service\\node_modules\\raw-body\\index.js:238:16)\n' +
+    '    at done (F:\\Web Tec 2\\NoSQL\\universitry-management-auth-service\\node_modules\\raw-body\\index.js:227:7)\n' +
+    '    at IncomingMessage.onEnd (F:\\Web Tec 2\\NoSQL\\universitry-management-auth-service\\node_modules\\raw-body\\index.js:287:7)\n' +
+    '    at IncomingMessage.emit (node:events:511:28)\n' +
+    '    at endReadableNT (node:internal/streams/readable:1367:12)\n' +
+    '    at processTicksAndRejections (node:internal/process/task_queues:82:21)',
+  label: 'UM',
+  timestamp: '2024-04-14T23:53:28.263Z'
+}
