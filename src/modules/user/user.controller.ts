@@ -1,4 +1,4 @@
-import { Request, Response } from 'express'
+import { Request, RequestHandler, Response } from 'express'
 import { UserService } from './user.service'
 import catchAsync from '../../share/catchAsync'
 import sendResponse from '../../share/sendResponse'
@@ -8,13 +8,41 @@ import { paginationFields } from '../../constants/pagination'
 import { IUser } from './user.interface'
 import { userFilterableFields } from './user.constant'
 
-const createUser = catchAsync(async (req: Request, res: Response) => {
-  const { ...user } = req.body
-  const result = await UserService.createUser(user)
-  sendResponse<IUser[]>(res, {
+const createStudent = catchAsync(async (req: Request, res: Response) => {
+  const { student, ...userData } = req.body
+
+  const result = await UserService.createStudent(student, userData)
+
+  sendResponse<IUser>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'User created successfully',
+    message: 'Student created successfully!',
+    data: result,
+  })
+})
+
+const createFaculty = catchAsync(async (req: Request, res: Response) => {
+  const { faculty, ...userData } = req.body
+
+  const result = await UserService.createFaculty(faculty, userData)
+
+  sendResponse<IUser>(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Faculty created successfully!',
+    data: result,
+  })
+})
+
+const createAdmin = catchAsync(async (req: Request, res: Response) => {
+  const { admin, ...userData } = req.body
+
+  const result = await UserService.createAdmin(admin, userData)
+
+  sendResponse<IUser>(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Admin created successfully!',
     data: result,
   })
 })
@@ -32,45 +60,53 @@ const getAllUser = catchAsync(async (req: Request, res: Response) => {
     data: result.data,
   })
 })
-const getSingleUser = catchAsync(async (req: Request, res: Response) => {
-  const id = req.params.id
-  const result = await UserService.getSingleUser(id)
+const getSingleUser: RequestHandler = catchAsync(
+  async (req: Request, res: Response) => {
+    const id = req.params.id
+    const result = await UserService.getSingleUser(id)
 
-  sendResponse<IUser[]>(res, {
-    statusCode: httpStatus.OK,
-    success: true,
-    message: 'User fetched successfully!',
-    data: result,
-  })
-})
+    sendResponse<IUser>(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'User fetched successfully!',
+      data: result,
+    })
+  },
+)
 
-const updateUser = catchAsync(async (req: Request, res: Response) => {
-  const id = req.params.id
-  const updatedData = req.body
-  const result = await UserService.updateUser(id, updatedData)
+const updateUser: RequestHandler = catchAsync(
+  async (req: Request, res: Response) => {
+    const id = req.params.id
+    const updatedData = req.body
+    const result = await UserService.updateUser(id, updatedData)
 
-  sendResponse<IUser[]>(res, {
-    statusCode: httpStatus.OK,
-    success: true,
-    message: 'User updated successfully!',
-    data: result,
-  })
-})
+    sendResponse<IUser>(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'User updated successfully!',
+      data: result,
+    })
+  },
+)
 
-const deleteUser = catchAsync(async (req: Request, res: Response) => {
-  const id = req.params.id
-  const result = await UserService.deleteUser(id)
+const deleteUser: RequestHandler = catchAsync(
+  async (req: Request, res: Response) => {
+    const id = req.params.id
+    const result = await UserService.deleteUser(id)
 
-  sendResponse<IUser[]>(res, {
-    statusCode: httpStatus.OK,
-    success: true,
-    message: 'User deleted successfully!',
-    data: result,
-  })
-})
+    sendResponse<IUser>(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'User deleted successfully!',
+      data: result,
+    })
+  },
+)
 
 export const UserController = {
-  createUser,
+  createStudent,
+  createFaculty,
+  createAdmin,
   getAllUser,
   getSingleUser,
   updateUser,

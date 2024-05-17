@@ -43,7 +43,7 @@ const getSingleAcademicDepartment = catchAsync(
     const result =
       await AcademicDepartmentService.getSingleAcademicDepartment(id)
 
-    sendResponse<IAcademicDepartment[]>(res, {
+    sendResponse<IAcademicDepartment>(res, {
       statusCode: httpStatus.OK,
       success: true,
       message: 'Academic Department fetched successfully!',
@@ -61,7 +61,7 @@ const updateAcademicDepartment = catchAsync(
       updatedData,
     )
 
-    sendResponse<IAcademicDepartment[]>(res, {
+    sendResponse<IAcademicDepartment>(res, {
       statusCode: httpStatus.OK,
       success: true,
       message: 'Academic Department updated successfully!',
@@ -75,7 +75,7 @@ const deleteAcademicDepartment = catchAsync(
     const id = req.params.id
     const result = await AcademicDepartmentService.deleteAcademicDepartment(id)
 
-    sendResponse<IAcademicDepartment[]>(res, {
+    sendResponse<IAcademicDepartment>(res, {
       statusCode: httpStatus.OK,
       success: true,
       message: 'Academic Department deleted successfully!',

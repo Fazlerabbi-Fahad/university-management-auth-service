@@ -11,8 +11,8 @@ import {
 import { AcademicSemester } from './academicSemester.model'
 import { IPaginationOptions } from '../../interface/pagination'
 import { IGenericResponse } from '../../interface/common'
-import { paginationHelpers } from '../../helpers/paginationHeloper'
 import { SortOrder } from 'mongoose'
+import { paginationHelpers } from '../../helpers/paginationHeloper'
 
 const createAcademicSemester = async (
   payload: IAcademicSemester,
@@ -83,6 +83,7 @@ const getSingleSemesters = async (
   id: string,
 ): Promise<IAcademicSemester | null> => {
   const result = await AcademicSemester.findById(id)
+
   return result
 }
 

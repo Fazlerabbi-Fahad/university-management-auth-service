@@ -45,6 +45,6 @@ academicSemesterSchema.pre('save', async function (next) {
 })
 
 export const AcademicSemester = model<IAcademicSemester, AcademicSemesterModel>(
-  'Academic Semester',
+  'AcademicSemester',
   academicSemesterSchema,
 )

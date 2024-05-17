@@ -42,7 +42,7 @@ const getSingleAcademicFaculty = catchAsync(
     const id = req.params.id
     const result = await AcademicFacultyService.getSingleAcademicFaculty(id)
 
-    sendResponse<IAcademicFaculty[]>(res, {
+    sendResponse<IAcademicFaculty>(res, {
       statusCode: httpStatus.OK,
       success: true,
       message: 'Academic faculty fetched successfully!',
@@ -60,7 +60,7 @@ const updateAcademicFaculty = catchAsync(
       updatedData,
     )
 
-    sendResponse<IAcademicFaculty[]>(res, {
+    sendResponse<IAcademicFaculty>(res, {
       statusCode: httpStatus.OK,
       success: true,
       message: 'Academic faculty updated successfully!',
@@ -74,7 +74,7 @@ const deleteAcademicFaculty = catchAsync(
     const id = req.params.id
     const result = await AcademicFacultyService.deleteAcademicFaculty(id)
 
-    sendResponse<IAcademicFaculty[]>(res, {
+    sendResponse<IAcademicFaculty>(res, {
       statusCode: httpStatus.OK,
       success: true,
       message: 'Academic faculty deleted successfully!',

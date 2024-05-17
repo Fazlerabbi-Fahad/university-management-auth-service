@@ -3,7 +3,6 @@ import Config from '../Config'
 import handleValidationError from '../errors/handleValidationError'
 import { IGenericErrorMessage } from '../interface/ErrorMessage'
 import ApiError from '../errors/ApiError'
-import { errorLogger } from '../share/logger'
 import { ZodError } from 'zod'
 import handleZodError from '../errors/handleZodError'
 import handleCastError from '../errors/handleCastError'
@@ -17,7 +16,7 @@ const globalErrorHandler: ErrorRequestHandler = async (
   // eslint-disable-next-line no-unused-expressions
   Config.env === 'development'
     ? console.log('globalErrorHandler', error)
-    : errorLogger.error('globalErrorHandler', error)
+    : console.error('globalErrorHandler', error)
 
   let statusCode = 500
   let message = 'Something went wrong!'
